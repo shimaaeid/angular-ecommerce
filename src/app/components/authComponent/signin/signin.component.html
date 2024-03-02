@@ -1,0 +1,58 @@
+
+<section class="vh-50 mt-5 py-5 ">
+  <div class="display-table">
+      <div class="display-table-cell">
+          <div class="container">
+              <div class="row justify-content-center gy-4">
+                  <div class="col-lg-6 m-auto shadow bg-light p-5 ">
+                      <div class="card account-card">
+                          <div class="card-body">
+                              <div class="text-center mt-3">
+                                  <h3 class="font-weight-bold"><a routerLink="/" class="text-main"><i class="mdi mdi-alien"></i>FreshCart</a></h3>
+                                  <p class="text-muted">Login Now...</p>
+                              </div>
+
+                                  <form [formGroup]="loginForm" class="p-4" (ngSubmit) ="loginSubmit(loginForm)">
+
+
+                                      <div class="form-group">
+                                          <label for="email">Email</label>
+                                          <input type="email" class="form-control" id="email" formControlName = "email">
+                                          <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" >
+                                            <p class="text-danger " *ngIf="loginForm.get('email')?.getError('required')">This Input is Required</p>
+                                            <p class="text-danger " *ngIf="loginForm.get('email')?.getError('email')">Enter a Valid Email</p>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="password">Password</label>
+                                          <input type="password" class="form-control" id="password" formControlName = "password">
+                                          <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" >
+                                            <p class="text-danger " *ngIf="loginForm.get('password')?.getError('required')">This Input is Required</p>
+                                            <p class="text-danger " *ngIf="loginForm.get('password')?.getError('pattern')">Enter a Valid Password</p>
+                                          </div>
+                                      </div>
+
+                                      <p *ngIf="error" class="text-danger ">{{ error }}</p>
+                                      <div class="d-grid mt-3">
+                                          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login
+                                            <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                                          </button>
+                                      </div>
+
+                                      <div class="mt-4 mb-0 text-center">
+                                          <p class="mb-0">Forgot Password ? <a routerLink="/forgot-password" class="text-danger">Reset Password</a></p>
+                                          <p class="mb-0">Don't have an account ? <a routerLink="/signup" class="text-danger">Sign Up</a></p>
+
+                                      </div>
+                                  </form>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+

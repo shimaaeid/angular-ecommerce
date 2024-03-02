@@ -1,0 +1,38 @@
+<div *ngIf="productList.length > 0; else loading" class="container py-5 mt-5">
+  <input type="text" placeholder="search..." class="w-50 m-auto form-control my-3" [(ngModel)] = "searchValue">
+  <div class="row gy-4">
+    <div *ngFor="let product of productList | search : searchValue" class="col-sm-6 col-lg-3 col-md-4 col-xl-3">
+      <div class="product overflow-hidden p-3 shadow position-relative h-100 ">
+        <!-- add icon to wishlist -->
+        <i *ngIf="!wishlistData.includes($any(product._id))" (click)="addToWishlist(product._id)" class="fa-regular fa-heart heart position-absolute "></i>
+        <!-- remove icon from wishlist -->
+        <i *ngIf="wishlistData.includes($any(product._id))" (click)="removeWishlistProduct(product._id)" class="fa-solid fa-heart heart fa-2x"></i>
+        <div >
+          <img [routerLink]="['/product-details',product._id]" [src]="product.imageCover" class="w-100" [alt]="product.title">
+          <p class="text-main">{{ product.title }}</p>
+          <!-- <p class="text-main">{{ product.category.name }}</p> -->
+          <div class="d-flex justify-content-between align-items-center  ">
+            <p>{{ product.price | currency}}</p>
+            <p>
+              <!-- {{ product.ratingsQuantity }} -->
+              <i [class.rating-color] ="product.ratingsAverage >= num" *ngFor ="let num of [1,2,3,4,5]"
+               class="fa-solid fa-star rating-color font-sm"></i>
+               <span>{{ product.ratingsAverage }}</span>
+            </p>
+          </div>
+          <button class="btn bg-main w-100 text-light" (click)="addToCart(product._id)">Add to Cart</button>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="vh-100 d-flex justify-content-center align-items-center ">
+    <i class="fa-solid fa-spinner fa-spin text-main fa-5x"></i>
+  </div>
+</ng-template>

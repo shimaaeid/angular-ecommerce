@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-sm navbar-dark text-black position-fixed w-100 top-0 left-0 bg-light z-3  "
+>
+<div class="container">
+  <a class="navbar-brand" href="#"><i class="fa-solid fa-cart-flatbed-suitcase  text-success "></i><span class="mx-1 fw-bolder text-black ">FreshCart</span></a>
+  <button
+    class="navbar-toggler d-lg-none"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  ></button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul *ngIf="isLogin"  class="navbar-nav me-auto mt-2 mt-lg-0 ">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="text-main">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/brands" routerLinkActive="text-main">Brands</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/category" routerLinkActive="text-main">Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products" routerLinkActive="text-main">Products</a>
+      </li>
+
+
+
+    </ul>
+
+    <ul class="navbar-nav m-auto mt-2 mt-lg-0 ">
+
+      <li class="nav-item">
+        <a class="nav-link position-relative " routerLink="/wishlist" routerLinkActive="text-main"><i class="fa-solid fa-heart fa-2x text-danger"></i>
+        <span class="badge bg-main text-light position-absolute top-0 end-50 ">{{ wishlistNumber }}</span>
+        </a>
+
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link position-relative " routerLink="/mycart" routerLinkActive="text-main"><i class="fas fa-cart-shopping text-main"></i>
+        <span class="badge bg-main text-light position-absolute top-0 end-50 ">{{ cartNumber }}</span>
+        </a>
+
+      </li>
+      <li *ngIf="!isLogin" class="nav-item">
+        <a class="nav-link" routerLinkActive="text-main" routerLink="/signin">SignIn</a>
+      </li>
+      <li *ngIf="!isLogin" class="nav-item">
+        <a class="nav-link" routerLinkActive="text-main" routerLink="/signup">SignUP</a>
+      </li>
+      <li *ngIf="isLogin" class="nav-item mx-3">
+        <a class="nav-link" (click)="logout()" routerLinkActive="text-main">LogOut</a>
+      </li>
+
+      <li class="nav-item d-flex justify-content-center  align-items-center  ">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-linkedin mx-3"></i>
+        <i class="fab fa-twitter"></i>
+      </li>
+
+
+    </ul>
+
+  </div>
+</div>
+
+
+</nav>
+

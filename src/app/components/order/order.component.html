@@ -1,0 +1,33 @@
+<div class="container my-5 mt-5 py-5">
+  <div class="row ">
+    <h3 class="fw-bolder ">Orders</h3>
+
+    <div class="col-md-10 m-auto my-5 bg-light shadow p-5">
+      <div *ngFor="let order of orders" class="row ">
+        <div *ngFor="let item of order.cartItems" class="row border-bottom py-2">
+          <div class="col-md-2">
+            <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+          </div>
+          <div class="col-md-10 d-flex justify-content-between align-items-center ">
+            <div>
+              <p>{{ item.product.title }}</p>
+              <p>{{ item.price | currency }}</p>
+              <p>
+                <!-- {{ product.ratingsQuantity }} -->
+                <i [class.rating-color] ="item.product.ratingsAverage >= num" *ngFor ="let num of [1,2,3,4,5]"
+                 class="fa-solid fa-star rating-color font-sm"></i>
+                 <span>{{ item.product.ratingsAverage }}</span>
+              </p>
+            </div>
+            <button class="btn bg-main w-25 text-light " (click)="addToCart(item.product._id)"><i class="fa-solid fa-circle-plus mx-1"></i>Cart</button>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

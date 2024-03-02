@@ -1,0 +1,18 @@
+<div *ngIf="brandList.length > 0; else loading" class="container my-4 mt-5 py-5 ">
+  <div class="row gy-4">
+    <div *ngFor="let brand of brandList" class="col-sm-6 col-lg-3 col-md-4">
+      <div class="border border-success rounded p-2 shadow">
+        <div>
+          <img [src]="brand.image" class="w-100" [alt]="brand.slug">
+          <p class="text-main">{{ brand.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="vh-100 d-flex justify-content-center align-items-center ">
+    <i class="fa-solid fa-spinner fa-spin text-main fa-5x"></i>
+  </div>
+</ng-template>

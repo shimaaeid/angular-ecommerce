@@ -1,0 +1,94 @@
+<section class="vh-50 mt-5 py-5 ">
+  <div class="display-table">
+    <div class="display-table-cell">
+      <div class="container">
+        <div class="row justify-content-center gy-4">
+          <div class="col-lg-6 m-auto shadow bg-light p-5 ">
+            <div class="card account-card">
+              <div class="card-body">
+                <div class="text-center mt-3">
+                  <h3 class="font-weight-bold"><a routerLink="/" class="text-main"><i
+                        class="mdi mdi-alien"></i>FreshCart</a></h3>
+                  <p class="text-muted">Register Now...</p>
+                </div>
+
+                <form [formGroup]="registerForm" class="p-4" (ngSubmit)="registerSubmit(registerForm)">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched">
+                      <p class="text-danger " *ngIf="registerForm.get('name')?.getError('required')">This Input is
+                        Required</p>
+                      <p class="text-danger " *ngIf="registerForm.get('name')?.getError('minLength')">Minimum Length is
+                        3</p>
+                      <p class="text-danger " *ngIf="registerForm.get('name')?.getError('maxLength')">Muximum Length is
+                        10</p>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                    <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+                      <p class="text-danger " *ngIf="registerForm.get('email')?.getError('required')">This Input is
+                        Required</p>
+                      <p class="text-danger " *ngIf="registerForm.get('email')?.getError('email')">Enter a Valid Email
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                    <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+                      <p class="text-danger " *ngIf="registerForm.get('password')?.getError('required')">This Input is
+                        Required</p>
+                      <p class="text-danger " *ngIf="registerForm.get('password')?.getError('pattern')">Enter a Valid
+                        Password</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="rePassword">rePassword</label>
+                    <input type="password" class="form-control" id="rePassword" formControlName="rePassword">
+                    <div *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
+                      <p class="text-danger " *ngIf="registerForm.get('rePassword')?.getError('required')">This Input is
+                        Required</p>
+                      <p class="text-danger " *ngIf="registerForm.get('rePassword')?.getError('mismatch')">
+                      Confirm Password is incorrect</p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control" id="phone" formControlName="phone">
+                    <div *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched">
+                      <p class="text-danger " *ngIf="registerForm.get('phone')?.getError('required')">This Input is
+                        Required</p>
+                      <p class="text-danger " *ngIf="registerForm.get('phone')?.getError('pattern')">Enter a Valid Phone
+                        Number</p>
+                    </div>
+                  </div>
+
+
+                  <p *ngIf="error" class="text-danger ">{{ error }}</p>
+                  <div class="d-grid mt-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register
+                      <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin"></i></span>
+
+                    </button>
+                  </div>
+
+                  <div class="mt-4 mb-0 text-center">
+                    <p class="mb-0">Do U have an account ? <a routerLink="/signin" class="text-danger">Sign in</a></p>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

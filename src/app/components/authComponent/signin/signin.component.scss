@@ -1,0 +1,52 @@
+.account-home-btn {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+  z-index: 1;
+}
+
+.display-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.display-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.account-card form .form-control {
+  height: 30px;
+  margin-bottom: 15px;
+}
+
+.account-card form label {
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.account-card .alert {
+  font-size: 14px;
+}
+.account-pages-logo {
+ color:#0aad0a
+}
+
+.btn-primary{
+  background-color: #0aad0a !important;
+  border: #0aad0a !important;
+}
+
+a{
+  color: #000;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+input{
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+input:focus{
+  box-shadow: none;
+}
